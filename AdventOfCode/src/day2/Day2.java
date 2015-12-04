@@ -23,7 +23,7 @@ public class Day2 {
 
 		while ((line = bf2.readLine()) != null) {
 			String[] dim = line.split("x");
-			
+
 			l = Integer.parseInt(dim[0]);
 			w = Integer.parseInt(dim[1]);
 			h = Integer.parseInt(dim[2]);
@@ -32,15 +32,17 @@ public class Day2 {
 			int boxSideB = 2 * l * w;
 			int boxSideC = 2 * h * w;
 
-			System.out.println("Box: " + line); //box dimensions
-			
-			int smallerSide = getSmallerSide(boxSideA, boxSideB, boxSideC); // stores the smallest side / extra papper for each present 
-			System.out.println("Smallest side: " + smallerSide);
+			System.out.println("Box: " + line); // box dimensions
+	
+			int extraPapperPerBox = min(boxSideA, boxSideB, boxSideC); // stores the smallest side / extra papper for each present
 
-			int boxArea = boxSideA + boxSideB + boxSideC; // box area for each present
+			System.out.println("Smallest side: " + extraPapperPerBox);
+
+			int boxArea = boxSideA + boxSideB + boxSideC; // box area for each
+															// present
 			System.out.println("Box Area: " + boxArea);
 
-			extraPapper = extraPapper + smallerSide; // total extra papper 
+			extraPapper = extraPapper + extraPapperPerBox; // total extra papper
 			System.out.println("Total extra papper: " + extraPapper);
 
 			papperNeeded = papperNeeded + boxArea; // total papper required
@@ -51,20 +53,9 @@ public class Day2 {
 		System.out.println("Total papper:" + (papperNeeded + extraPapper));
 
 	}
-
-	/**
-	 * 
-	 * @param sideA
-	 * @param sideB
-	 * @param sideC
-	 * @return the smaller side
-	 */
-	public static int getSmallerSide(int sideA, int sideB, int sideC) {
-		if (sideA <= sideB && sideA <= sideC) {
-			return sideA;
-		} else if (sideB <= sideA && sideB <= sideC) {
-			return sideB;
-		}
-		return sideC;
-	}
+	
+	 public static int min(int sideA, int sideB, int sideC) {
+	      return Math.min(Math.min(sideA, sideB), sideC);
+	  }
+	
 }

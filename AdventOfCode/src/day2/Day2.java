@@ -13,7 +13,7 @@ public class Day2 {
 		int w = 0;
 		int h = 0;
 
-		int totalPapperNeeded = 0;
+		int ribbonNeeded = 0;
 		int papperNeeded = 0;
 		int extraPapper = 0;
 
@@ -33,26 +33,34 @@ public class Day2 {
 			int boxSideC = 2 * h * w;
 
 			int smallerSide = getSmallerSide(boxSideA, boxSideB, boxSideC);
-
+			System.out.println("Smallest side: " + smallerSide);
+			
 			int boxArea = boxSideA + boxSideB + boxSideC;
+			System.out.println("Box Area: " + boxArea);
+			
+//			int ribbonPerBox = 2 * smallerSide;
+//			System.out.println("Ribbon Per box: " + ribbonPerBox);
+//			ribbonNeeded = ribbonNeeded + ribbonPerBox;
+//			System.out.println("Total RibbonNeeded: " + ribbonNeeded);
 			
 			extraPapper = extraPapper + smallerSide;
+			System.out.println("Total extra papper: " + extraPapper);
 			
 			papperNeeded = papperNeeded + boxArea;
+			System.out.println("Total fix papper: " + papperNeeded);
+			
+			System.out.println("----");
 		}
-		System.out.println(papperNeeded + extraPapper);
+		System.out.println("Total papper:" + (papperNeeded + extraPapper + ribbonNeeded));
 
 	}
 
 	public static int getSmallerSide(int sideA, int sideB, int sideC) {
 		if (sideA < sideB && sideA < sideC) {
-			System.out.println(sideA);
 			return sideA;
 		} else if (sideB < sideA && sideB < sideC) {
-			System.out.println(sideB);
 			return sideB;
 		}
-		System.out.println(sideC);
 		return sideC;
 	}
 }

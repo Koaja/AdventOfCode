@@ -13,7 +13,8 @@ public class Day2 {
 		int w = 0;
 		int h = 0;
 
-		int finalArea = 0;
+		int totalPapperNeeded = 0;
+		int papperNeeded = 0;
 		int extraPapper = 0;
 
 		BufferedReader bf2 = new BufferedReader(
@@ -34,10 +35,12 @@ public class Day2 {
 			int smallerSide = getSmallerSide(boxSideA, boxSideB, boxSideC);
 
 			int boxArea = boxSideA + boxSideB + boxSideC;
-			extraPapper = boxArea + smallerSide;
-			finalArea = extraPapper + finalArea;
+			
+			extraPapper = extraPapper + smallerSide;
+			
+			papperNeeded = papperNeeded + boxArea;
 		}
-		System.out.println(finalArea);
+		System.out.println(papperNeeded + extraPapper);
 
 	}
 

@@ -28,24 +28,28 @@ public class Day2 {
 			w = Integer.parseInt(dim[1]);
 			h = Integer.parseInt(dim[2]);
 
-			int boxSideA = 2 * l * h;
-			int boxSideB = 2 * l * w;
-			int boxSideC = 2 * h * w;
+			int boxSideA = l * w;
+			int boxSideB = w * h;
+			int boxSideC = h * l;
 
 			System.out.println("Box: " + line); // box dimensions
-	
-			int extraPapperPerBox = min(boxSideA, boxSideB, boxSideC); // stores the smallest side / extra papper for each present
+
+			// stores the smallest side / extra papper for each present
+			int extraPapperPerBox = getSmallerSide(boxSideA, boxSideB, boxSideC);
 
 			System.out.println("Smallest side: " + extraPapperPerBox);
 
-			int boxArea = boxSideA + boxSideB + boxSideC; // box area for each
-															// present
+			// box area for each present
+			int boxArea = 2 * (boxSideA + boxSideB + boxSideC);
+
 			System.out.println("Box Area: " + boxArea);
 
-			extraPapper = extraPapper + extraPapperPerBox; // total extra papper
+			// total extra papper
+			extraPapper = extraPapper + extraPapperPerBox;
 			System.out.println("Total extra papper: " + extraPapper);
 
-			papperNeeded = papperNeeded + boxArea; // total papper required
+			// total papper required
+			papperNeeded = papperNeeded + boxArea;
 			System.out.println("Total exact papper: " + papperNeeded);
 
 			System.out.println("----");
@@ -53,9 +57,9 @@ public class Day2 {
 		System.out.println("Total papper:" + (papperNeeded + extraPapper));
 
 	}
-	
-	 public static int min(int sideA, int sideB, int sideC) {
-	      return Math.min(Math.min(sideA, sideB), sideC);
-	  }
-	
+
+	public static int getSmallerSide(int sideA, int sideB, int sideC) {
+		return Math.min(Math.min(sideA, sideB), sideC);
+	}
+
 }
